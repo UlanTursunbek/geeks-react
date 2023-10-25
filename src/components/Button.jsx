@@ -1,10 +1,9 @@
-import './Button.css'
+import styles from "./Button.module.css"
 
-export function Button() {
-    return (
-        <button className='button'> Hi i'm button
-        
-        <div>12312</div>
-        </button>
-    )
+export const Button = ({ children, onClick }) => {
+  return (
+    <div onClick={onClick} className={styles.button}>
+      {children}
+    </div>
+  )
 }

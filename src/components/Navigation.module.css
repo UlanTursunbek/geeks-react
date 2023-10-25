@@ -1,0 +1,15 @@
+.nav {
+  background-color: aqua;
+  padding: 16px;
+}
+
+.link {
+  font-weight: 600;
+  margin-left: 16px;
+  color: black;
+}
+
+.link:hover {
+  background-color: brown;
+  color: white;
+}

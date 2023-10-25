@@ -1,18 +1,17 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { Button } from "./components/Button";
-import { Input } from "./components/Input";
+import { Navigation } from "./components/Navigation"
+import { Routes, Route } from "react-router-dom"
+import { PageIndex } from "./pages/Index"
+import { PageAbout } from "./pages/About"
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <div>Hello world and geeks</div>
-      <Input />
+    <>
+      <Navigation />
 
-      <div>24</div>
-      <Button />
-    </div>
-  );
+      <Routes>
+        <Route index path='/' element={<PageIndex />} />
+        <Route path='/about/:id' element={<PageAbout />} />
+      </Routes>
+    </>
+  )
 }
-
-export default App;
