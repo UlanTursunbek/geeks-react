@@ -4,8 +4,13 @@
   padding: 8px;
   border-radius: 8px;
   color: white;
+  width: 56px;
 }
 
 .button:hover {
   opacity: 0.6;
+}
+
+.mt16 {
+  margin-top: 16px;
 }

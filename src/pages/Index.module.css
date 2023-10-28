@@ -3,3 +3,8 @@
   background-color: hotpink;
   height: 100%;
 }
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}

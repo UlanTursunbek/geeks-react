@@ -10,6 +10,9 @@ export const Navigation = () => {
       <Link to='/about' className={styles.link}>
         About
       </Link>
+      <Link to='/redux' className={styles.link}>
+        Redux
+      </Link>
     </nav>
   )
 }

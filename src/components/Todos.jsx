@@ -4,14 +4,14 @@ import styles from "./Todos.module.css"
 import { memo } from "react"
 
 const Todos = ({ todos, handleDelete, addTodo }) => {
-  console.log("render todos")
+  // console.log("render todos")
 
-  const location = useLocation()
+  // const location = useLocation()
 
-  console.log(location)
+  // console.log(location)
   return (
     <div>
-      <Button onClick={addTodo}>Add new todo</Button>
+      {/* <Button onClick={addTodo}>Add new todo</Button> */}
 
       {todos.map((todo) => (
         <Link key={todo.id} to={`/about/${todo.id}`}>

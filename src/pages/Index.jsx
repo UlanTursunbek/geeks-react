@@ -2,6 +2,10 @@ import { useCallback, useEffect, useState, useMemo } from "react"
 import styles from "./Index.module.css"
 import { useFetch } from "../hooks/useFetch"
 import Todos from "../components/Todos"
+import ClassButton from "../components/ClassButton"
+import { Button } from "../components/Button"
+import { useDispatch, useSelector } from "react-redux"
+import { decrement, increment } from "../store/features/counterSlice"
 
 const URL = (page) => `https://jsonplaceholder.typicode.com/todos?_page=${page}`
 
@@ -26,50 +30,60 @@ export const PageIndex = () => {
     if (!isLoading) {
       setList(data)
     }
-  }, [isLoading, counter, URL])
+  }, [isLoading])
 
-  const handleDelete = useCallback(
-    (id) => {
-      const filtered = list.filter((item) => item.id !== id)
-      setList(filtered)
-    },
-    [list],
-  )
+  // const handleDelete = useCallback(
+  //   (id) => {
+  //     const filtered = list.filter((item) => item.id !== id)
+  //     setList(filtered)
+  //   },
+  //   [list],
+  // )
 
-  const addTodo = useCallback(() => {
-    setList((prev) => [
-      {
-        id: Date.now(),
-        title: `Todo created at ${Date.now()}`,
-      },
-      ...prev,
-    ])
-  }, [list])
+  // const addTodo = useCallback(() => {
+  //   setList((prev) => [
+  //     {
+  //       id: Date.now(),
+  //       title: `Todo created at ${Date.now()}`,
+  //     },
+  //     ...prev,
+  //   ])
+  // }, [list])
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
+
+  // if (error) {
+  //   alert(error.message)
+  // }
 
   const increment = () => {
     setCounter((prev) => prev + 1)
   }
+
   const decrement = () => {
     setCounter((prev) => prev - 1)
   }
-
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
-
-  if (error) {
-    alert(error.message)
-  }
+  //data.limit
+  const LIMIT = 10
+  const arrayButtons = Array.from(Array(LIMIT).keys())
 
   return (
     <div className={styles.main}>
-      <h1>{counter}</h1>
-      <button onClick={decrement}>one page back</button>
-      <button onClick={increment}>one page forward</button>
+      <div className={styles.buttons}>
+        <ClassButton onClick={() => decrement()}>one page back</ClassButton>
+        <Button onClick={() => increment()}>one page forward</Button>
+      </div>
 
+      {arrayButtons.map((item) => (
+        <Button key={item} onClick={() => setCounter(item)}>
+          {item}
+        </Button>
+      ))}
+      {/* <button onClick={decrement}>one page back</button> */}
       {/* {calculation} */}
 
-      <Todos todos={list} handleDelete={handleDelete} addTodo={addTodo} />
+      <Todos todos={list} />
     </div>
   )
 }
